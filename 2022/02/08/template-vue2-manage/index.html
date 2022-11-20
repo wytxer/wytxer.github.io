@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>分享一个基于 Vue.js 和 ant-design-vue 的中后台前端脚手架 | 程序员未央</title><meta name="author" content="程序员未央,wy@bszhct.com"><meta name="copyright" content="程序员未央"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于 Vue.js 2.x 和 ant-design-vue 组件库且风格统一的用于快速构建中后台系统的前端脚手架。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分享一个基于 Vue.js 和 ant-design-vue 的中后台前端脚手架">
+<meta property="og:url" content="http://wytxer.github.io/2022/02/08/template-vue2-manage/index.html">
+<meta property="og:site_name" content="程序员未央">
+<meta property="og:description" content="基于 Vue.js 2.x 和 ant-design-vue 组件库且风格统一的用于快速构建中后台系统的前端脚手架。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wytxer.github.io/images/default/cover-vue.png">
+<meta property="article:published_time" content="2022-02-08T12:30:14.000Z">
+<meta property="article:modified_time" content="2022-09-15T14:08:24.889Z">
+<meta property="article:author" content="程序员未央">
+<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="ant-design-vue">
+<meta property="article:tag" content="vue-router">
+<meta property="article:tag" content="vuex">
+<meta property="article:tag" content="mockjs2">
+<meta property="article:tag" content="g2">
+<meta property="article:tag" content="antdv-kit">
+<meta property="article:tag" content="axios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wytxer.github.io/images/default/cover-vue.png"><link rel="shortcut icon" href="/images/config/avatar.png"><link rel="canonical" href="http://wytxer.github.io/2022/02/08/template-vue2-manage/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 程序员未央","link":"链接: ","source":"来源: 程序员未央","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '分享一个基于 Vue.js 和 ant-design-vue 的中后台前端脚手架',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-15 22:08:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/self/article.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/config/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/default/cover-vue.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">程序员未央</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">分享一个基于 Vue.js 和 ant-design-vue 的中后台前端脚手架</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-08T12:30:14.000Z" title="发表于 2022-02-08 20:30:14">2022-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-15T14:08:24.889Z" title="更新于 2022-09-15 22:08:24">2022-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%BB%BA%E8%AE%BE/">前端基础建设</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E5%BB%BA%E8%AE%BE/%E4%B8%AD%E5%90%8E%E5%8F%B0%E5%89%8D%E7%AB%AF%E8%84%9A%E6%89%8B%E6%9E%B6/">中后台前端脚手架</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="分享一个基于 Vue.js 和 ant-design-vue 的中后台前端脚手架"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于公司 toB 的业务属性，系统之间有很多高度重复的列表、详情、弹框等页面，故从 20+ 的项目中沉淀出来了这一个脚手架，目前已有 5+ 的系统在使用，未来会长期维护，欢迎食用~<a target="_blank" rel="noopener" href="http://tv2.manage.bszhct.com/">在线效果预览</a></p>
+<p>篇幅有点长，建议先收藏，觉得有帮助的话，给个 star 吧，感谢~<a target="_blank" rel="noopener" href="https://github.com/wytxer/template-vue2-manage">中后台前端脚手架 GitHub 地址</a></p>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p><strong>基于 Vue.js 2.x 和 ant-design-vue 组件库且风格统一的用于快速构建中后台系统的前端脚手架。</strong></p>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><table>
+<thead>
+<tr>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+<th>IE11</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<h2 id="功能列表"><a href="#功能列表" class="headerlink" title="功能列表"></a>功能列表</h2><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>功能介绍</th>
+<th>进度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>动态路由</td>
+<td>后端返回菜单结构前端渲染，支持一键切换到静态路由</td>
+<td>√</td>
+</tr>
+<tr>
+<td>静态路由</td>
+<td>前端写死的静态路由，支持一键切换到动态路由</td>
+<td>√</td>
+</tr>
+<tr>
+<td>菜单</td>
+<td>支持展开收起、黑白色主题切换、支持左边和顶部两种布局，应对业务的多种风格需要</td>
+<td>√</td>
+</tr>
+<tr>
+<td>布局</td>
+<td>内置了不同的布局，新增布局可应对大部分场景</td>
+<td>√</td>
+</tr>
+<tr>
+<td>权限控制</td>
+<td>支持控制菜单显隐、按钮显隐，前端对数据结构有一定要求，可约定小改，权限控制如鱼得水</td>
+<td>√</td>
+</tr>
+<tr>
+<td>通用页面</td>
+<td>内置了 403、404、500 页面，让系统更人性化</td>
+<td>√</td>
+</tr>
+<tr>
+<td>错误捕获</td>
+<td>可一键开启和关闭错误日志，错误排查和定位可视化管理</td>
+<td>√</td>
+</tr>
+<tr>
+<td>请求</td>
+<td>基于 axios，支持文件上传、下载、自动检测 header、自定识别 mockUrl 与 url、支持多域名单域名，覆盖了绝大部分作为一个请求的使用场景</td>
+<td>√</td>
+</tr>
+<tr>
+<td>工具库</td>
+<td>内置了变量类型判断、uuid 生成、常用手机号、身份证、密码校验等其他常用函数，全局可调用，方便快捷</td>
+<td>√</td>
+</tr>
+<tr>
+<td>自定义扩展</td>
+<td>包含对 Vue.prototype 的扩展、自定义指令、组件库等，全局添加指令和功能更加统一</td>
+<td>√</td>
+</tr>
+<tr>
+<td>打包</td>
+<td>支持私有云打包（内网环境）和非私有云打包，一键开启和关闭，无需关注繁杂的 webpack 配置</td>
+<td>√</td>
+</tr>
+<tr>
+<td>mock 服务</td>
+<td>内置了 mocker-api 和 mockjs2，应对不同的使用场景，且做了兼容，只需要一种 mock 写法即可，不再因为迟迟没提供接口而等待</td>
+<td>√</td>
+</tr>
+<tr>
+<td>eslint</td>
+<td>内置了比较严格和完整的 eslint 规则，保证了代码规范，协同开发更高效</td>
+<td>√</td>
+</tr>
+<tr>
+<td>store</td>
+<td>内置了 store，可直接获取到用户信息、全局配置等，拿来即用</td>
+<td>√</td>
+</tr>
+<tr>
+<td>用户中心</td>
+<td>内置了登录、注册、找回密码页面，简单的对接后端接口即可完成账号体系的构建</td>
+<td>√</td>
+</tr>
+<tr>
+<td>多环境</td>
+<td>内置了预览环境、演示环境、测试环境、正式环境打包配置，可满足多环境打包部署要求</td>
+<td>√</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.bszhct.com/docs/tv2m-template.html">模板库</a></td>
+<td>提供了一套模板库来极速创建页面，开发效率显著提升</td>
+<td>√</td>
+</tr>
+<tr>
+<td>单元测试</td>
+<td>集成完整的测试用例，让脚手架更健壮</td>
+<td>feature</td>
+</tr>
+</tbody></table>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md              <span class="comment"># 搞事之前请先读我</span></span><br><span class="line">├── babel.config.js</span><br><span class="line">├── config                 <span class="comment"># 项目配置</span></span><br><span class="line">│   ├── config.js          <span class="comment"># 提供给 vue.config.js 使用的自定义配置，抽离了相对独立部分</span></span><br><span class="line">│   ├── project.config.js  <span class="comment"># 提供给 Node.js 部署包的配置项</span></span><br><span class="line">│   └── theme.plugin.js    <span class="comment"># 主题配置，自定义主题配置的时候会用到</span></span><br><span class="line">├── jsconfig.json</span><br><span class="line">├── mock                   <span class="comment"># mock 数据服务</span></span><br><span class="line">│   ├── index.js</span><br><span class="line">│   ├── modules            <span class="comment"># 所有的 mock 数据定义在这里</span></span><br><span class="line">│   └── utils.js           <span class="comment"># 内置处理 mock 数据的工具函数</span></span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">│   ├── favicon.ico</span><br><span class="line">│   └── index.html</span><br><span class="line">├── server                <span class="comment"># Node.js 部署包中间件</span></span><br><span class="line">│   └── index.js</span><br><span class="line">├── src                   <span class="comment"># 源码目录</span></span><br><span class="line">│   ├── api               <span class="comment"># 请求</span></span><br><span class="line">│   ├── app.less          <span class="comment"># 公共样式</span></span><br><span class="line">│   ├── app.vue           <span class="comment"># 根组件</span></span><br><span class="line">│   ├── assets            <span class="comment"># 静态资源</span></span><br><span class="line">│   ├── components        <span class="comment"># 组件</span></span><br><span class="line">│   ├── extends           <span class="comment"># 扩展，包含对 Vue.prototype 的扩展、自定义指令、组件库等</span></span><br><span class="line">│   ├── layouts           <span class="comment"># 布局</span></span><br><span class="line">│   ├── main.js           <span class="comment"># 入口文件</span></span><br><span class="line">│   ├── router            <span class="comment"># 路由配置</span></span><br><span class="line">│   ├── store             <span class="comment"># store 配置</span></span><br><span class="line">│   ├── utils             <span class="comment"># 工具库</span></span><br><span class="line">│   └── views             <span class="comment"># 页面</span></span><br><span class="line">├── tests                 <span class="comment"># 单元测试</span></span><br><span class="line">│   └── unit</span><br><span class="line">├── .<span class="built_in">env</span>                  <span class="comment"># 通用的环境变量配置</span></span><br><span class="line">├── .env.development      <span class="comment"># 开发环境变量配置</span></span><br><span class="line">├── .env.production       <span class="comment"># 正式环境变量配置</span></span><br><span class="line">├── vue.config.js         <span class="comment"># vue-cli 提供的配置文件</span></span><br><span class="line">└── yarn.lock</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>脚手架约定了一份环境变量配置，用来实现对各个功能的切换和支持，各个变量的作用如下：</p>
+<h4 id="BASE-URL"><a href="#BASE-URL" class="headerlink" title="BASE_URL"></a>BASE_URL</h4><p>路由地址前缀，vue-cli 提供的环境变量，一般不需要改，效果同 vue.config.js 中的 <code>publicPath</code>，若有对 <code>publicPath</code> 的修改需求都强烈建议来修改 <code>BASE_URL</code> 变量。</p>
+<h4 id="VUE-APP-API-PREFIX"><a href="#VUE-APP-API-PREFIX" class="headerlink" title="VUE_APP_API_PREFIX"></a>VUE_APP_API_PREFIX</h4><p>请求接口的 url 前缀，跟随后端开发提供的来改，若不需要前缀，可设置为「/」。</p>
+<h4 id="VUE-APP-LS-PREFIX"><a href="#VUE-APP-LS-PREFIX" class="headerlink" title="VUE_APP_LS_PREFIX"></a>VUE_APP_LS_PREFIX</h4><p>脚手架内置了 vue-ls 这个库来操作 storage，此变量是 namespace 字段配置。</p>
+<h4 id="VUE-APP-PRIVATE"><a href="#VUE-APP-PRIVATE" class="headerlink" title="VUE_APP_PRIVATE"></a>VUE_APP_PRIVATE</h4><p>是否属于私有云部署，就是是否部署到内网，如果项目本身使用到的组件很少，也可以设置为 <code>true</code>，以此来减少没有必要的 cdn 资源加载，如果使用了自定义主题功能，一定要设置成 <code>true</code>，否则自定义主题打包后不生效。</p>
+<h4 id="VUE-APP-USE-MOCKER"><a href="#VUE-APP-USE-MOCKER" class="headerlink" title="VUE_APP_USE_MOCKER"></a>VUE_APP_USE_MOCKER</h4><p>内置 <code>mocker-api</code>（可以看到网络请求）和 <code>mockjs2</code>（看不到网络请求）两个 mock 服务，设置为 <code>true</code> 标识使用 <code>mocker-api</code>，设置成 <code>false</code> 使用 <code>mockjs2</code>。</p>
+<h4 id="VUE-APP-BUILD-ENV"><a href="#VUE-APP-BUILD-ENV" class="headerlink" title="VUE_APP_BUILD_ENV"></a>VUE_APP_BUILD_ENV</h4><p>打包环境，部署到不同生产环境的区分。默认是 production，即生产环境，已在 package.json 中内置了预览环境、测试环境、演示环境和生产环境的配置，可根据业务自行添加更多的环境配置。</p>
+<h4 id="VUE-APP-THEME-COLOR"><a href="#VUE-APP-THEME-COLOR" class="headerlink" title="VUE_APP_THEME_COLOR"></a>VUE_APP_THEME_COLOR</h4><p>主题色，默认是跟随 <code>ant-design-vue</code> 的主题色 <code>#1890ff</code>，自定义主题色时，主色值只需要修改这一个地方即可，然后在 <code>config/config.s</code> 下的 <code>modifyVars</code> 字段中配置自定义的主题色变量。跟自定义主题色相关的改动，一般也只需要改动这两个地方即可。</p>
+<h4 id="VUE-APP-BUILD-REPORT"><a href="#VUE-APP-BUILD-REPORT" class="headerlink" title="VUE_APP_BUILD_REPORT"></a>VUE_APP_BUILD_REPORT</h4><p>是否开启打包分析，当发现打包后的 dist 资源文件很大时，设置为 <code>true</code>，每次打包完毕后会自动打开本次打包的可视化分析页面。</p>
+<div class="note blue icon flat"><i class="note-icon fas fa-exclamation-circle"></i><p>除了上面的环境变量，脚手架基于 vue-cli 提供的 vue.config.js 配置能力，封装了对打包优化、主题配置和接口代理配置功能。</p>
+</div>
+
+<h3 id="打包优化"><a href="#打包优化" class="headerlink" title="打包优化"></a>打包优化</h3><p>将 <code>VUE_APP_PRIVATE</code> 设置为 <code>false</code>，打包时就会自动忽略常用的第三方库而使用 cdn 加载，减少了打包后的资源大小，提高了打包速度。</p>
+<p>将 <code>VUE_APP_PRIVATE</code> 设置为 <code>true</code>，会将所有资源都打包到 dist，同时对第三方库进行了简单的分割以减小单个文件的大小。</p>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>在 <code>config/theme.config.js</code> 中封装了自定义主题色功能的支持，配合 <code>VUE_APP_THEME_COLOR</code> 变量使用。</p>
+<h3 id="接口代理配置"><a href="#接口代理配置" class="headerlink" title="接口代理配置"></a>接口代理配置</h3><p>在 <code>config/theme.config.js</code> 的 <code>proxy</code> 字段中配置接口请求地址。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 系统默认的前缀配置</span></span><br><span class="line">  [apiPrefix]: &#123;</span><br><span class="line">    <span class="attr">target</span>: <span class="string">&#x27;http://127.0.0.1:7001&#x27;</span>,</span><br><span class="line">    <span class="attr">ws</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">changeOrigin</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 用户中心接口前缀配置</span></span><br><span class="line">  <span class="string">&#x27;^/account&#x27;</span>: &#123;</span><br><span class="line">    <span class="attr">target</span>: <span class="string">&#x27;http://account.example.com&#x27;</span>,</span><br><span class="line">    <span class="attr">ws</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;^/account&#x27;</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="定制"><a href="#定制" class="headerlink" title="定制"></a>定制</h2><p>项目启动后，在右边会始终有一个「定制」按钮，展开后的完整配置项如下：</p>
+<div class="image-box">
+  <img src="/images/tv2mt-use-dev-drawer.jpg" style="width: 50%" />
+</div>
+
+<p>在这里可以设置菜单风格、主题色、导航模式快速预览效果，确定好最终的配置后，可在 <code>src/store/modules/app.js</code> 中同步修改，以下是支持的完整配置项：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * logo 的图片地址，默认是 @/assets/logo.svg</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  logo,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * logo 旁边的 slogan</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">slogan</span>: <span class="string">&#x27;中后台前端脚手架&#x27;</span>,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 菜单主题，默认为深色主题</span></span><br><span class="line"><span class="comment">   * dark：深色主题</span></span><br><span class="line"><span class="comment">   * light：亮色主题</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">menuTheme</span>: <span class="title class_">Vue</span>.<span class="property">ls</span>.<span class="title function_">get</span>(types.<span class="property">MENU_THEME</span>, <span class="string">&#x27;light&#x27;</span>),</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 菜单模式</span></span><br><span class="line"><span class="comment">   * vertical：垂直，菜单是弹出形式</span></span><br><span class="line"><span class="comment">   * inline：内嵌菜单</span></span><br><span class="line"><span class="comment">   * horizontal：水平，顶部导航菜单</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">menuMode</span>: <span class="string">&#x27;inline&#x27;</span>,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 布局模式</span></span><br><span class="line"><span class="comment">   * side：左右布局，导航菜单在左边</span></span><br><span class="line"><span class="comment">   * top：上下布局，导航菜单在顶部</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">layout</span>: <span class="title class_">Vue</span>.<span class="property">ls</span>.<span class="title function_">get</span>(types.<span class="property">LAYOUT</span>, <span class="string">&#x27;side&#x27;</span>),</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 默认的主题色，跟随 ant-design-vue 库</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">themeColor</span>: <span class="title class_">Vue</span>.<span class="property">ls</span>.<span class="title function_">get</span>(types.<span class="property">THEME_COLOR</span>, process.<span class="property">env</span>.<span class="property">VUE_APP_THEME_COLOR</span>),</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 路由模式</span></span><br><span class="line"><span class="comment">   * static：静态。如果是静态模式，路由的增删改在 src/router/route-static.js 中完成</span></span><br><span class="line"><span class="comment">   * dynamic：动态。如果是动态模式，路由的增删改在 src/router/route-dynamic.js 中完成，每次</span></span><br><span class="line"><span class="comment">   * 在 routeComponents 中新增一个路由页面之后，再去更新后端的路由菜单</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">routeMode</span>: <span class="string">&#x27;dynamic&#x27;</span>,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 菜单的展开收起状态</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">menuCollapsed</span>: <span class="title class_">Vue</span>.<span class="property">ls</span>.<span class="title function_">get</span>(types.<span class="property">MENU_COLLAPSED</span>, <span class="literal">false</span>),</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 导航模式</span></span><br><span class="line"><span class="comment">   * breadcrumb：面包屑导航</span></span><br><span class="line"><span class="comment">   * tab：标签导航</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">navMode</span>: <span class="title class_">Vue</span>.<span class="property">ls</span>.<span class="title function_">get</span>(types.<span class="property">NAV_MODE</span>, <span class="string">&#x27;breadcrumb&#x27;</span>),</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 是否需要捕获错误日志，具体实现代码请移步 src/core/extends.js 里面查看</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">catchError</span>: <span class="title class_">Vue</span>.<span class="property">ls</span>.<span class="title function_">get</span>(types.<span class="property">CATCH_ERROR</span>, <span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note blue icon flat"><i class="note-icon fas fa-exclamation-circle"></i><p>正式环境打包上线后，这个「定制」入口会自动隐藏</p>
+</div>
+
+
+<h2 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h2><p>完整的请求配置项如下：</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>请求地址，如果定义了 url 就优先使用，否则使用 mockUrl，默认不以斜杠开头，如果以斜杠开头就不会拼接 <code>VUE_APP_API_PREFIX</code> 变量</td>
+</tr>
+<tr>
+<td>mockUrl</td>
+<td>mock 服务的请求地址，定义了就使用</td>
+</tr>
+<tr>
+<td>method</td>
+<td>请求方式，支持 get、post、put、delete 等</td>
+</tr>
+<tr>
+<td>data</td>
+<td>如果是 post，data 方式传递的参数是 json 类型，可以和下面的 params 字段一起使用</td>
+</tr>
+<tr>
+<td>params</td>
+<td>传递的参数是字符串类型的，拼接在 url 后面的，类似 <code>/a/b?id=1&amp;type=2</code> 这种，如果是 get 请求，只能通过 params 传递参数</td>
+</tr>
+<tr>
+<td>headerType</td>
+<td>请求头类型，默认是 <code>json</code>，对应的 <code>Content-Type</code> 是 <code>application/json</code>，设置成 <code>form</code> 的时候，<code>Content-Type</code> 是 <code>application/x-www-form-urlencoded; charset=UTF-8</code>，设置成 <code>upload</code>，<code>Content-Type</code> 是 <code>multipart/form-data</code>，设置成 <code>download</code>，<code>headers.resType</code> 是 <code>blob</code>，会自动下载文件，配合 <code>fileName</code> 字段自定义下载文件的名称，设置成 <code>blob</code>，返回文件流信息</td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>配合 <code>headerType</code> 等于 <code>download</code> 时使用，用来自定义下载文件的名称</td>
+</tr>
+<tr>
+<td>closeAutoTips</td>
+<td>请求失败之后默认会抛出后端给的错误，<code>closeAutoTips</code> 设置为 <code>true</code> 可以关闭掉这个行为</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://github.com/wytxer/template-vue2-manage/blob/main/src/utils/http.js#L7">请求 code 配置</a></p>
+<p>使用示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发起 post 请求，并传递 data 和 params 参数，然后关闭自动提示</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">queryTableList</span> (data) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="comment">// 定义了 url 就会优先使用，否则使用 mockUrl，url 不以 / 开头时，会自动拼接 VUE_APP_API_PREFIX 前缀</span></span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;table/list&#x27;</span>,</span><br><span class="line">    <span class="attr">mockUrl</span>: <span class="string">&#x27;/mock/table/list&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    params,</span><br><span class="line">    data,</span><br><span class="line">    <span class="comment">// 设置请求类型</span></span><br><span class="line">    <span class="attr">headerType</span>: <span class="string">&#x27;json&#x27;</span>,</span><br><span class="line">    <span class="comment">// 关闭自动提示</span></span><br><span class="line">    <span class="attr">closeAutoTips</span>: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发起 get 请求</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">queryGetDemo</span> (params) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="comment">// 接口以 / 开头时，会自动忽略 VUE_APP_API_PREFIX 配置，这种使用场景一般会配合设置一下代理</span></span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/account/table/list&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    params</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// post 请求下载文件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">queryDownloadDemo</span> (data) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;file/download&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="comment">// 设置为 download 进行文件下载，内部封装了文件下载动作，调用后会自动下载文件，无需再做其他处理</span></span><br><span class="line">    <span class="attr">headerType</span>: <span class="string">&#x27;download&#x27;</span>,</span><br><span class="line">    <span class="comment">// 指定下载的文件名称</span></span><br><span class="line">    <span class="attr">fileName</span>: <span class="string">&#x27;前端入门到放弃.pdf&#x27;</span>,</span><br><span class="line">    <span class="comment">// 参数传递</span></span><br><span class="line">    data</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取文件流自定义处理</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">queryContentBlob</span> (data) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;file/download&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    data,</span><br><span class="line">    <span class="attr">headerType</span>: <span class="string">&#x27;blob&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">blob</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// blob 文件流信息，可自定义处理</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="使用-mock-服务"><a href="#使用-mock-服务" class="headerlink" title="使用 mock 服务"></a>使用 mock 服务</h2><p>在后端还没提供接口前，前端可自定义页面需要的假数据。在 <code>mock/modules</code> 新增一个 <code>select.js</code> 并定义一个 mock 数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selectData = [</span><br><span class="line">  &#123; <span class="attr">value</span>: <span class="string">&#x27;1&#x27;</span>, <span class="attr">label</span>: <span class="string">&#x27;正常&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">value</span>: <span class="string">&#x27;2&#x27;</span>, <span class="attr">label</span>: <span class="string">&#x27;禁用&#x27;</span> &#125;</span><br><span class="line">]</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="string">&#x27;POST /select/list&#x27;</span>: selectData</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 <code>mock/index.js</code> 中引入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> select = <span class="built_in">require</span>(<span class="string">&#x27;./modules/select&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">  ...<span class="title function_">addPrefix</span>(select)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 <code>src/api/select.js</code> 中定义调用接口的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取下拉列表</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">querySelectData</span> (params) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="attr">mockUrl</span>: <span class="string">&#x27;/mock/select/list&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    params</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后在需要使用该请求的页面导入使用即可。</p>
+<p>在 template 中使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ak-select</span> <span class="attr">:loadData</span>=<span class="string">&quot;querySelectData&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在 JS 中使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">querySelectData</span>()</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">selectData</span> = res.<span class="property">data</span> || []</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="路由和菜单"><a href="#路由和菜单" class="headerlink" title="路由和菜单"></a>路由和菜单</h2><p>路由分为静态和动态两种，静态就是前端写死路由配置，路由的控制完全由前端负责。而动态路由则是由后端接口返回一个菜单列表，前端根据约定规则解析并生成最终的路由。两者的切换只需要在 <code>src/store/modules/app.js</code> 中修改 <code>routeMode</code> 的值即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 路由模式</span></span><br><span class="line"><span class="comment">   * static：静态。如果是静态模式，路由的增删改在 src/router/route-static.js 中完成</span></span><br><span class="line"><span class="comment">   * dynamic：动态。如果是动态模式，路由的增删改在 src/router/route-dynamic.js 中完成，每次在 routeComponents 中新增一个路由页面之后，再去更新后端的路由菜单</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="attr">routeMode</span>: <span class="string">&#x27;dynamic&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>路由支持的配置项如下：</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>path</td>
+<td>访问路径，不带斜杠，相对路径，最终会组装成绝对路径</td>
+</tr>
+<tr>
+<td>component</td>
+<td>对应的组件，静态路由这个值是一个 import 导入的一个页面对象，动态路由是 <code>routeComponents</code> 里面定义的 key</td>
+</tr>
+<tr>
+<td>title</td>
+<td>当前页面的标题，在面包屑导航和菜单导航里面显示</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>菜单前面的 Icon 图标，这个顶级菜单才会设置，目前支持的 Icon 是 antd 的 Icon 组件内的，如果想要自定义图标，需要引入自定义 Icon 组件</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>路由的元信息，如果是静态路由，这里面包含了 <code>title</code>、<code>icon</code>、<code>hidden</code>、<code>target</code>、<code>href</code> 和 <code>hideChildren</code> 这 6 个字段</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>设置当前路由是否在菜单导航中显示</td>
+</tr>
+<tr>
+<td>hideChildren</td>
+<td>设置当前路由的子路由是否在菜单导航中显示</td>
+</tr>
+<tr>
+<td>children</td>
+<td>子路由</td>
+</tr>
+</tbody></table>
+<p>一份完整的静态路由看起来像这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="comment">// component 始终指向一个引用的 vue 页面文件</span></span><br><span class="line">  <span class="attr">component</span>: <span class="title class_">LayoutBase</span>,</span><br><span class="line">  <span class="attr">redirect</span>: <span class="string">&#x27;/dashboard/workplace&#x27;</span>,</span><br><span class="line">  <span class="attr">children</span>: [&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;dashboard&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">LayoutBlock</span>,</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;首页&#x27;</span>,</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;dashboard&#x27;</span>,</span><br><span class="line">    <span class="attr">children</span>: [&#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;workplace&#x27;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&#x27;@/views/dashboard/workspace.vue&#x27;</span>),</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;工作台&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;list&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&#x27;@/views/table/list.vue&#x27;</span>),</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;列表&#x27;</span>,</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;list&#x27;</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/user&#x27;</span>,</span><br><span class="line">  <span class="attr">component</span>: <span class="title class_">LayoutUser</span>,</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;用户中心&#x27;</span>,</span><br><span class="line">  <span class="attr">icon</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">  <span class="attr">children</span>: []</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>一份相对完整的动态路由看起来像这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">parentId</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">sort</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="comment">// component 始终指向一个字符串，这个字符串在 src/router/route-dynamic.js 文件的 routeComponents 中定义</span></span><br><span class="line">  <span class="attr">component</span>: <span class="string">&#x27;LayoutBase&#x27;</span>,</span><br><span class="line">  <span class="attr">redirect</span>: <span class="string">&#x27;/dashboard/workplace&#x27;</span>,</span><br><span class="line">  <span class="attr">children</span>: [&#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">parentId</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">sort</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;dashboard&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="string">&#x27;LayoutBlock&#x27;</span>,</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;首页&#x27;</span>,</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;dashboard&#x27;</span>,</span><br><span class="line">    <span class="attr">children</span>: [&#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">parentId</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="attr">sort</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;workplace&#x27;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="string">&#x27;workspace&#x27;</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;工作台&#x27;</span>,</span><br><span class="line">      <span class="attr">icon</span>: <span class="literal">null</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">parentId</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">sort</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;list&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="string">&#x27;tableList&#x27;</span>,</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;列表&#x27;</span>,</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;list&#x27;</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">parentId</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">sort</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/user&#x27;</span>,</span><br><span class="line">  <span class="attr">component</span>: <span class="string">&#x27;LayoutUser&#x27;</span>,</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;用户中心&#x27;</span>,</span><br><span class="line">  <span class="attr">icon</span>: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">  <span class="attr">children</span>: []</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>实际业务中，可能还有 <code>hidden</code>、<code>target</code>、<code>createdAt</code> 等字段，可视情况自行添加。</p>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><p>脚手架支持按钮级别的权限控制，只需要在当前登录的用户信息（<code>src/store/modules/user.js</code>）中返回对应的权限点即可。例如当前用户拥有列表页面的编辑、添加和删除权限，那对应的权限点配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">permissions</span>: [<span class="string">&#x27;listAdd&#x27;</span>, <span class="string">&#x27;listDelete&#x27;</span>, <span class="string">&#x27;listEdit&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在列表页面控制操作按钮的显示可以这么使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a-button</span> <span class="attr">v-action.listAdd</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">a-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a-button</span> <span class="attr">v-action.listDelete</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 <code>$auth</code> 方法来控制：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">this</span>.$auth(<span class="string">&#x27;listEdit&#x27;</span>)) &#123;</span><br><span class="line">  <span class="comment">// 进行编辑操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>脚手架内置了样式库。<a target="_blank" rel="noopener" href="https://docs.bszhct.com/docs/style-utils.html">样式库使用文档</a>。</p>
+<p>脚手架也将 <code>ant-design-vue</code> 的主题变量添加到了全局，你可以在任意的 less 中使用其中的变量，就像这样：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ant-card</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">@main-color</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.C-FAIL</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">@error-color</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/vueComponent/ant-design-vue/blob/master/components/style/themes/default.less">完整的 less 变量</a></p>
+<p>同时，脚手架为了方便扩展也自定义了一部分 less 变量，可以在 <code>src/components/index.less</code> 中找到。</p>
+<h2 id="使用模板库"><a href="#使用模板库" class="headerlink" title="使用模板库"></a>使用模板库</h2><p>脚手架开发了一套配套的模板库，可以方便的创建各种组件和页面，极大提高开发效率。<a target="_blank" rel="noopener" href="https://docs.bszhct.com/docs/tv2m-template.html">模板库使用文档</a></p>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>脚手架内置了生产环境、测试环境、演示环境和预览环境，命令都是配置好的，可直接执行对应的命令进行打包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生产环境打包</span></span><br><span class="line">yarn build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试环境打包</span></span><br><span class="line">yarn build:<span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 演示环境打包</span></span><br><span class="line">yarn build:demo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 预览环境打包</span></span><br><span class="line">yarn build:preview</span><br></pre></td></tr></table></figure>
+
+<div class="note blue icon flat"><i class="note-icon fas fa-exclamation-circle"></i><p>预览环境是脚手架自带的环境，会将「定制」功能打包出来。</p>
+</div>
+
+
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="部署到后端服务器"><a href="#部署到后端服务器" class="headerlink" title="部署到后端服务器"></a>部署到后端服务器</h3><p>直接将打包的 dist 静态资源复制到对应后端的静态资源目录即可。例如 Java 做后端的话可以放到 <code>src/main/resources/static</code> 下，或者放到 <code>src/main/webapp</code> 下。</p>
+<h3 id="部署到-nginx-服务器"><a href="#部署到-nginx-服务器" class="headerlink" title="部署到 nginx 服务器"></a>部署到 nginx 服务器</h3><p>直接将打包的 dist 静态资源复制到 nginx 指定的静态资源目录即可。</p>
+<h3 id="使用-wy-app-部署"><a href="#使用-wy-app-部署" class="headerlink" title="使用 wy app 部署"></a>使用 wy app 部署</h3><p><code>wy</code> 命令是 <code>wy-cli</code> 提供的命令。<a target="_blank" rel="noopener" href="https://docs.bszhct.com/docs/wy-cli.html">wy-cli 使用文档</a></p>
+<p>需要先执行 <code>yarn build</code> 打包出来 dist 静态资源包，然后执行 <code>wy tar</code> 打包成一个 Node.js 部署包。</p>
+<p>然后将部署包上传到后端服务器，解压后在根目录执行 <code>wy app</code> 命令一键启动即可。</p>
+<p><code>wy app</code> 启动使用的配置文件参见 <code>config/project.config.js</code>。</p>
+<h2 id="使用-wy-cli-创建脚手架"><a href="#使用-wy-cli-创建脚手架" class="headerlink" title="使用 wy-cli 创建脚手架"></a>使用 wy-cli 创建脚手架</h2><p>全局安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i @wytxer/wy-cli -g</span><br></pre></td></tr></table></figure>
+
+<p>然后执行 <code>wy init project-name</code> 命令安装脚手架，在列表中选择后台脚手架：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">❯ 中后台前端脚手架（Vue.js 2.x + Vue Router + Vuex + Ant Design Vue）</span><br></pre></td></tr></table></figure>
+
+<p>脚手架常用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">yarn install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动开发服务</span></span><br><span class="line">yarn serve</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生产环境打包</span></span><br><span class="line">yarn build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试环境打包</span></span><br><span class="line">yarn build:<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="代码和文档"><a href="#代码和文档" class="headerlink" title="代码和文档"></a>代码和文档</h2><p>篇幅较长，感谢阅读，脚手架以后会长期维护，欢迎下载使用：<a target="_blank" rel="noopener" href="https://github.com/wytxer/template-vue2-manage">中后台前端脚手架 GitHub 地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.bszhct.com/docs/template-vue2-manage.html">脚手架使用文档</a>也会保持同步更新。</p>
+<h2 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h2><p><img src="/images/config/wytxer.png" alt="程序员未央"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://wytxer.github.io">程序员未央</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wytxer.github.io/2022/02/08/template-vue2-manage/">http://wytxer.github.io/2022/02/08/template-vue2-manage/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wytxer.github.io" target="_blank">程序员未央</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue-js/">Vue.js</a><a class="post-meta__tags" href="/tags/ant-design-vue/">ant-design-vue</a><a class="post-meta__tags" href="/tags/vue-router/">vue-router</a><a class="post-meta__tags" href="/tags/vuex/">vuex</a><a class="post-meta__tags" href="/tags/mockjs2/">mockjs2</a><a class="post-meta__tags" href="/tags/g2/">g2</a><a class="post-meta__tags" href="/tags/antdv-kit/">antdv-kit</a><a class="post-meta__tags" href="/tags/axios/">axios</a></div><div class="post_share"><div class="social-share" data-image="/images/default/cover-vue.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/09/antdv-kit/"><img class="prev-cover" src="/images/default/cover-ant-design.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">分享一个基于 ant-design-vue 封装的组件库</div></div></a></div><div class="next-post pull-right"><a href="/2022/02/07/template-node-egg/"><img class="next-cover" src="/images/default/cover-egg-sequelize.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">分享一个基于 Egg.js 的后端脚手架</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/02/09/antdv-kit/" title="分享一个基于 ant-design-vue 封装的组件库"><img class="cover" src="/images/default/cover-ant-design.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-09</div><div class="title">分享一个基于 ant-design-vue 封装的组件库</div></div></a></div><div><a href="/2022/08/15/onlyoffice-quick-start/" title="如何构建基于 Onlyoffice 的私有云 Office 办公体验"><img class="cover" src="/images/cover-onlyoffice1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-15</div><div class="title">如何构建基于 Onlyoffice 的私有云 Office 办公体验</div></div></a></div><div><a href="/2022/08/20/onlyoffice-plugin/" title="5 分钟上手 Onlyoffice 插件开发"><img class="cover" src="/images/cover-onlyoffice3.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-20</div><div class="title">5 分钟上手 Onlyoffice 插件开发</div></div></a></div><div><a href="/2022/08/19/onlyoffice-usage/" title="Onlyoffice 二次开发指南"><img class="cover" src="/images/cover-onlyoffice2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-19</div><div class="title">Onlyoffice 二次开发指南</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/config/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">程序员未央</div><div class="author-info__description">人生苦短，我用 JavaScript</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wytxer"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-text">定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8"><span class="toc-text">功能列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">项目配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BASE-URL"><span class="toc-text">BASE_URL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-API-PREFIX"><span class="toc-text">VUE_APP_API_PREFIX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-LS-PREFIX"><span class="toc-text">VUE_APP_LS_PREFIX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-PRIVATE"><span class="toc-text">VUE_APP_PRIVATE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-USE-MOCKER"><span class="toc-text">VUE_APP_USE_MOCKER</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-BUILD-ENV"><span class="toc-text">VUE_APP_BUILD_ENV</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-THEME-COLOR"><span class="toc-text">VUE_APP_THEME_COLOR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE-APP-BUILD-REPORT"><span class="toc-text">VUE_APP_BUILD_REPORT</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96"><span class="toc-text">打包优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="toc-text">主题配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-text">接口代理配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6"><span class="toc-text">定制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82"><span class="toc-text">请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-mock-%E6%9C%8D%E5%8A%A1"><span class="toc-text">使用 mock 服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%92%8C%E8%8F%9C%E5%8D%95"><span class="toc-text">路由和菜单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-text">权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F"><span class="toc-text">样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%BA%93"><span class="toc-text">使用模板库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83"><span class="toc-text">发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-text">部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">部署到后端服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-nginx-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">部署到 nginx 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-wy-app-%E9%83%A8%E7%BD%B2"><span class="toc-text">使用 wy app 部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-wy-cli-%E5%88%9B%E5%BB%BA%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-text">使用 wy-cli 创建脚手架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%92%8C%E6%96%87%E6%A1%A3"><span class="toc-text">代码和文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E4%BC%97%E5%8F%B7"><span class="toc-text">公众号</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/20/onlyoffice-plugin/" title="5 分钟上手 Onlyoffice 插件开发"><img src="/images/cover-onlyoffice3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="5 分钟上手 Onlyoffice 插件开发"/></a><div class="content"><a class="title" href="/2022/08/20/onlyoffice-plugin/" title="5 分钟上手 Onlyoffice 插件开发">5 分钟上手 Onlyoffice 插件开发</a><time datetime="2022-08-20T02:34:57.000Z" title="发表于 2022-08-20 10:34:57">2022-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/19/onlyoffice-usage/" title="Onlyoffice 二次开发指南"><img src="/images/cover-onlyoffice2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Onlyoffice 二次开发指南"/></a><div class="content"><a class="title" href="/2022/08/19/onlyoffice-usage/" title="Onlyoffice 二次开发指南">Onlyoffice 二次开发指南</a><time datetime="2022-08-19T15:24:08.000Z" title="发表于 2022-08-19 23:24:08">2022-08-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/15/onlyoffice-quick-start/" title="如何构建基于 Onlyoffice 的私有云 Office 办公体验"><img src="/images/cover-onlyoffice1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何构建基于 Onlyoffice 的私有云 Office 办公体验"/></a><div class="content"><a class="title" href="/2022/08/15/onlyoffice-quick-start/" title="如何构建基于 Onlyoffice 的私有云 Office 办公体验">如何构建基于 Onlyoffice 的私有云 Office 办公体验</a><time datetime="2022-08-15T15:31:04.000Z" title="发表于 2022-08-15 23:31:04">2022-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/14/online-office-summary/" title="在线 Office 解决方案调研总结"><img src="/images/cover-online-office-summary.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在线 Office 解决方案调研总结"/></a><div class="content"><a class="title" href="/2022/08/14/online-office-summary/" title="在线 Office 解决方案调研总结">在线 Office 解决方案调研总结</a><time datetime="2022-08-14T08:39:04.000Z" title="发表于 2022-08-14 16:39:04">2022-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/12/web-env-install/" title="Web 前端开发环境安装指南"><img src="/images/cover-web-env-install.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web 前端开发环境安装指南"/></a><div class="content"><a class="title" href="/2022/03/12/web-env-install/" title="Web 前端开发环境安装指南">Web 前端开发环境安装指南</a><time datetime="2022-03-12T14:30:12.000Z" title="发表于 2022-03-12 22:30:12">2022-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By 程序员未央</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'aYpXv2rOvVYlWidzoRaYg9ft-gzGzoHsz',
+      appKey: 'cRBJCtMNiX7EIbBV0PfQDmIL',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
